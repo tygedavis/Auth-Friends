@@ -19,13 +19,18 @@ const FriendForm = props => {
   };
 
   const handleSubmit = e => {
-    //e.preventDefault();
+    e.preventDefault();
     axiosWithAuth()
       .post('/friends', newFriend)
       .then(res => {
         console.log(res);
         setNewFriend({
           newFriend: res.data
+        })
+        setNewFriend({
+          name: '',
+          age: '',
+          email: ''
         })
       })
       .catch(err => console.log(err))
